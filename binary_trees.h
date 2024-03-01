@@ -1,6 +1,6 @@
 #ifndef _BINARY_TREES_H_
 #define _BINARY_TREES_H_
-
+#include <stdlib.h>
 #include <stddef.h>
 
 /**
@@ -18,23 +18,23 @@ struct binary_tree_s *parent;
 struct binary_tree_s *left;
 struct binary_tree_s *right;
 };
-typedef struct binary_tree_s 
+typedef struct binary_tree_s
 binary_tree_t;
-typedef struct binary_tree_s 
+typedef struct binary_tree_s
 bst_t;
-typedef struct binary_tree_s 
+typedef struct binary_tree_s
 avl_t;
-typedef struct binary_tree_s 
+typedef struct binary_tree_s
 heap_t;
 /**
- * struct levelorder_queue_s - Node structure for a level order traversal queue.
- * @node: A pointer to a node of a binary tree.
- * @next: A pointer to the next node in the queue.
- */
+* struct levelorder_queue_s - Node structure for a level order traversal queue.
+* @node: A pointer to a node of a binary tree.
+* @next: A pointer to the next node in the queue.
+*/
 typedef struct levelorder_queue_s
 {
-    binary_tree_t *node; 
-    struct levelorder_queue_s *next;
+binary_tree_t *node;
+struct levelorder_queue_s *next;
 } levelorder_queue_t;
 
 
@@ -78,6 +78,9 @@ heap_t *heap_insert(heap_t **root, int value);
 heap_t *array_to_heap(int *array, size_t size);
 int heap_extract(heap_t **root);
 int *heap_to_sorted_array(heap_t *heap, size_t *size);
-
+bst_t *inorder_successor(bst_t *root);
+bst_t *bst_delete(bst_t *root, bst_t *node);
+bst_t *bst_remove_recursive(bst_t *root, bst_t *node, int value);
+bst_t *bst_remove(bst_t *root, int value);
 #endif /* _BINARY_TREES_H_ */
 
